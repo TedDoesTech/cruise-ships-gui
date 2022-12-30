@@ -11,3 +11,16 @@ describe('startingPort', () => {
         expect(ship.startingPort).toEqual('Southampton')
     });
 });
+describe('passengers', () => {
+    it('has passengers on board', () => {
+        const ship = new Ship('Titanic', 'Southampton', ['Dave, Zoe, Ryan'])
+        expect(ship.passengers).toBeInstanceOf(Array);
+    });
+});
+describe('setSail', () => {
+    it('is able to set sail', () => {
+        const ship = new Ship('Titanic', 'Southampton', ['Dave, Zoe, Ryan'])
+        ship.setSail();
+        expect(ship.startingPort).toBeFalsy();
+    });
+});

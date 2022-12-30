@@ -1,14 +1,16 @@
-const Ship = require("../src/Ship");
+const Ship = require("../src/ship.js");
+const Port = require("../src/port.js");
 
 describe('Ship', () => {
     it('returns a new cruise ship as an object', () => {
         expect(new Ship('Titanic', 'Southampton')).toBeInstanceOf(Object);
     });
 });
-describe('startingPort', () => {
-    it('has a starting point', () => {
-        const ship = new Ship('Titanic', 'Southampton')
-        expect(ship.startingPort).toEqual('Southampton')
+describe('currentPort', () => {
+    it('has a starting port', () => {
+        const port = new Port('Southampton')
+        const ship = new Ship('Titanic', port)
+        expect(ship.currentPort).toBe(port)
     });
 });
 describe('passengers', () => {
@@ -19,8 +21,20 @@ describe('passengers', () => {
 });
 describe('setSail', () => {
     it('is able to set sail', () => {
-        const ship = new Ship('Titanic', 'Southampton', ['Dave, Zoe, Ryan'])
+        const port = new Port('Southampton')
+        const ship = new Ship('Titanic', port, ['Dave, Zoe, Ryan'])
         ship.setSail();
-        expect(ship.startingPort).toBeFalsy();
+        expect(ship.currentPort).toBeFalsy();
+    });
+});
+describe('dock', () => {
+    it('is able to dock at a different port', () => {
+        const departurePort = new Port('Southampton');
+        const ship = new Ship('Titanic', departurePort, ['Dave, Zoe, Ryan']);
+        const destinationPort = new Port('Calais');
+
+        ship.dock(destinationPort);
+        
+        expect(ship.currentPort).toBe(destinationPort)
     });
 });

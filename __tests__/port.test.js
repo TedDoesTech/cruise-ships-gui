@@ -1,13 +1,15 @@
-const Port = require("../src/port");
+/* globals describe it expect */
+
+const Port = require('../src/port.js');
 
 describe('Port', () => {
-    it('returns a new port as an object', () => {
-        expect(new Port('Southampton')).toBeInstanceOf(Object);
+    it('can be instantiated', () => {
+        expect(new Port()).toBeInstanceOf(Object);
     });
-});
-describe('location', () => {
-    it('checks port has a location', () => {
-        const port = new Port('Southampton')
-        expect(port.location).toEqual('Southampton')
+
+    it('has a name', () => {
+        const port = new Port('Dover');
+
+        expect(port.name).toEqual('Dover');
     });
 });

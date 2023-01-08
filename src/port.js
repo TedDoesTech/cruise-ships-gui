@@ -1,7 +1,5 @@
-class Port {
-    constructor(location) {
-        this.location = location;
-    }
-};
+function Port (name) {
+    this.name = name;
+}
 
-module.exports = Port;
+module.exports = Port

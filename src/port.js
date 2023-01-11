@@ -4,12 +4,14 @@ function Port (name) {
 };
 
 Port.prototype.addShip=function(ship) {
-    this.ships = [ship];
+    this.ships.push(ship);
+    return this.ships;
 };
 
 Port.prototype.removeShip=function(ship) {
     const shipToRemoveIndex = this.ships.indexOf(ship);
-    this.ships = this.ships.splice(shipToRemoveIndex,1);
+    this.ships.splice(shipToRemoveIndex,1);
+    return this.ships;
 };
 
 module.exports = Port

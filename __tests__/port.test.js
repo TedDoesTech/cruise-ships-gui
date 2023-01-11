@@ -1,6 +1,8 @@
 /* globals describe it expect */
 
 const Port = require('../src/port.js');
+const Itinerary = require('../src/itinerary.js');
+const Ship = require('../src/ship.js');
 
 describe('Port', () => {
     it('can be instantiated', () => {
@@ -33,4 +35,12 @@ describe('Port', () => {
 
         expect(port.ships).toEqual([titanic]);
     });
+
+    it('gets added to port on instantiation', () => {
+        const dover = new Port('Dover');
+        const itinerary = new Itinerary([dover]);
+        const ship = new Ship(itinerary);
+      
+        expect(dover.ships).toContain(ship);
+      });
 });

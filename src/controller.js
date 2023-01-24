@@ -39,3 +39,5 @@
         window.Controller = Controller;
     };
 }());
+
+module.exports = Controller
